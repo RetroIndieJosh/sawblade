@@ -24,7 +24,8 @@ func _physics_process(delta):
         process_input(delta)
         process_gravity(delta)
 
-        move_on_floor()
+        update_forward_velocity()
+        process_move()
 
         check_enemy()
         check_wall()
@@ -54,20 +55,6 @@ func check_enemy():
                 if collider.get_name() == "Full Body":
                         collider.get_node("..").kill(direction)
 
-func move_on_floor():
-        is_on_platform = platform_detector.is_colliding()
-        if is_on_platform:
-                velocity.x = direction * forward_speed
-        else:
-                velocity.x = 0
-
-        var snap_vector = Vector2.ZERO
-        #if direction.y == 0.0:
-        snap_vector = Vector2.DOWN * floor_det_dist
-        velocity = move_and_slide_with_snap(
-                velocity, snap_vector, Vector2.UP, not is_on_platform, 4, 0.9, false
-        )
-
 func check_wall():
         if is_on_wall():
                 velocity.x = 0
@@ -83,3 +70,18 @@ func process_gravity(delta):
                 velocity.y = 0
                 return
         velocity.y += gravity * delta
+
+func process_move():
+        var snap_vector = Vector2.ZERO
+        #if direction.y == 0.0:
+        snap_vector = Vector2.DOWN * floor_det_dist
+        velocity = move_and_slide_with_snap(
+                velocity, snap_vector, Vector2.UP, not is_on_platform, 4, 0.9, false
+        )
+
+func update_forward_velocity():
+        is_on_platform = platform_detector.is_colliding()
+        if is_on_platform:
+                velocity.x = direction * forward_speed
+        else:
+                velocity.x = 0

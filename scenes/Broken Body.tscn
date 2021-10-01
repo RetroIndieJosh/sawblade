@@ -19,7 +19,7 @@ extents = Vector2( 7.36275, 41.6893 )
 extents = Vector2( 15.6727, 26.2817 )
 
 [node name="Broken Body" type="Node2D"]
-position = Vector2( 0, -34.4546 )
+position = Vector2( 0, -46.8017 )
 
 [node name="Head" type="RigidBody2D" parent="."]
 position = Vector2( 0, -70.436 )
@@ -66,7 +66,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Left Leg" type="RigidBody2D" parent="."]
-position = Vector2( 12.8956, 83.8447 )
+position = Vector2( 34.7836, 83.8447 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -80,7 +80,7 @@ texture = ExtResource( 4 )
 shape = SubResource( 3 )
 
 [node name="Right Leg" type="RigidBody2D" parent="."]
-position = Vector2( -6.77448, 83.8447 )
+position = Vector2( -17.4379, 80.4773 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
